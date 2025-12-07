@@ -321,7 +321,7 @@ html {
   }
 }
 
-/* ENTREVISTAS */
+/*---------------------- ENTREVISTAS---------------------- */
 .bloque-entrevistas {
   position: relative;
   min-height: 80vh;
@@ -386,6 +386,14 @@ html {
   background-color: #fff;
   color: #111;
   transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .btn-ver {
+    display: block;       /* hace que ocupe toda la línea */
+    margin: 0 auto;       /* centra horizontalmente */
+    text-align: center;   /* asegura que el texto quede centrado */
+  }
 }
 
 /* Carrusel solo en móviles/tablets */
