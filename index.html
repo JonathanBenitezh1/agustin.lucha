@@ -28,13 +28,17 @@
         <li class="nav-item"><a class="nav-link text-white" href="#historia">Historia</a></li>
         <li class="nav-item"><a class="nav-link text-white" href="#logros">Logros</a></li>
         <li class="nav-item"><a class="nav-link text-white" href="#contacto">Contacto</a></li>
+        <!-- Botón Patrociná visible solo en mobile dentro del menú -->
+        <li class="nav-item d-lg-none mt-2">
+          <a href="#patrocina" class="btn btn-dark rounded-pill px-4 w-100 text-center">Patrociná</a>
+        </li>
       </ul>
     </div>
 
-    <!-- Botón a la derecha -->
-    <div class="d-none d-lg-block">
-      <a href="#patrocina" class="btn btn-dark rounded-pill px-4">Patrociná</a>
-    </div>
+  <!-- Botón a la derecha (desktop) -->
+<div class="d-none d-lg-block">
+  <a href="#patrocina" class="btn btn-dark rounded-pill px-4">Patrociná</a>
+</div>
 
   </div>
 </nav>
@@ -46,13 +50,10 @@
       <div class="col-12 col-md-10 col-lg-6 text-light">
         <h1 class="display-4 fw-bold text-warning">Agustín Destribats</h1>
         <h2 class="fs-5 text-warning mb-3">Luchador Olímpico Argentino · ¡La fuerza que inspira!</h2>
-        <p class="mb-4"><br>Soy Agustín Destribats, nací en la ciudad de Córdoba el
-         30 de octubre de 1997. Mi vida fue marcada por la lucha
-		<br> desde pequeño. Logré ser el primer argentino en
-		<br> clasificar a los Juego Olímpicos luego de 1996. Soy el
-         primer argentino en conseguir una medalla del mundo.
-		<br> Estoy dentro del top 10 del ranking del mundo hace tres
-		 años consecutivos.</p>
+       <p class="mb-4">Soy Agustín Destribats, nací en la ciudad de Córdoba el 30
+         de octubre de 1997. Mi vida fue marcada por la lucha desde pequeño. Logré ser el primer
+          argentino en clasificar a los Juegos Olímpicos luego de 1996, el primero en conseguir una 
+          medalla mundial, y llevo tres años consecutivos dentro del top 10 del ranking mundial.</p>
         <a href="#historia" class="btn btn-dark rounded-pill px-4 mt-3">Conocé más</a>
       </div>
     </div>
@@ -63,8 +64,8 @@
 <section id="historia" class="historia-section text-light py-5">
   <div class="container">
     <div class="row align-items-center gy-4">
-      <div class="col-lg-6 text-center">
-        <h2 class="titulo-historia mb-4">Mi Historia</h2>
+      <div class="col-lg-6 text-center fade-left">
+  <h2 class="titulo-historia mb-4">Mi Historia</h2>
 
         <p>
           Conseguí 4 medallas de oro panamericanas y me convertí en el único luchador argentino en lograrlo. No fue para nada fácil el camino. Los cambios de culturas de países como Alemania o Irán, tan distintos a lo nuestro —el idioma, las rutinas, las comidas, la gente— me obligaron a adaptarme. Pero sin dudas, me marcaron en mi carrera deportiva.
@@ -83,7 +84,7 @@
         </p>
       </div>
 
-      <div class="col-lg-5 offset-lg-1 text-center">
+      <div class="col-lg-5 offset-lg-1 text-center fade-right">
         <img src="img/28-min.jpg" alt="Agustín en combate" class="img-fluid rounded-4 shadow">
       </div>
     </div>
@@ -95,12 +96,12 @@
   <div class="container py-5">
     <div class="row justify-content-end text-center text-lg-start">
       <div class="col-12 col-lg-6">
-        <h2 class="titulo-logros mb-4">Logros</h2>
+        <h2 class="titulo-logros mb-4 fade-up">Logros</h2>
         <ul class="list-unstyled">
-          <li>🥇 Campeón panamericano 2014 Cadete (Brasil)</li>
-          <li>🥇 Campeón sudamericano 2015 Adulto libre (Argentina)</li>
-          <li>🥇 Campeón panamericano 2016 Junior libre (Venezuela)</li>
-          <li>🥇 Campeón sudamericano 2016 Adulto libre (Colombia)</li>
+          <li class="fade-up delay-1">🥇 Campeón panamericano 2014 Cadete (Brasil)</li>
+          <li lass="fade-up delay-2">🥇 Campeón sudamericano 2015 Adulto libre (Argentina)</li>
+          <li class="fade-up delay-3">🥇 Campeón panamericano 2016 Junior libre (Venezuela)</li>
+          <li class="fade-up delay-4">🥇 Campeón sudamericano 2016 Adulto libre (Colombia)</li>
           <li>🥇 Campeón panamericano 2017 Junior libre (Perú)</li>
           <li>🥇 Campeón panamericano 2017 Junior greco (Perú)</li>
           <li>🥇 Campeón sudamericano 2017 Adulto libre (Brasil)</li>
@@ -216,9 +217,7 @@
 
     <!-- Grid solo en desktop -->
     <div class="row g-4 justify-content-center d-none d-lg-flex">
-      <!-- Pegá acá tus 4 tarjetas originales sin cambios -->
-       <div class="row g-4 justify-content-center">
-  <div class="col-md-6 col-lg-3">
+  <div class="col-md-6 col-lg-3 fade-up delay-1">
     <div class="card bg-transparent border-0 text-white h-100">
       <img src="img/entrevistas/tokio.jpg" class="card-img-top rounded-4" alt="Entrevista 1">
       <div class="card-body px-0">
@@ -230,7 +229,7 @@
     </div>
   </div>
 
-  <div class="col-md-6 col-lg-3">
+  <div class="col-md-6 col-lg-3 fade-up delay-2">
     <div class="card bg-transparent border-0 text-white h-100">
       <img src="img/entrevistas/1.jpeg" class="card-img-top rounded-4" alt="Entrevista 2">
       <div class="card-body px-0">
@@ -242,7 +241,7 @@
     </div>
   </div>
 
-  <div class="col-md-6 col-lg-3">
+  <div class="col-md-6 col-lg-3 fade-up delay-3">
     <div class="card bg-transparent border-0 text-white h-100">
       <img src="img/entrevistas/3.jpg" class="card-img-top rounded-4" alt="Entrevista 3">
       <div class="card-body px-0">
@@ -254,7 +253,7 @@
     </div>
   </div>
 
-  <div class="col-md-6 col-lg-3">
+  <div class="col-md-6 col-lg-3 fade-up delay-4">
     <div class="card bg-transparent border-0 text-white h-100">
       <img src="img/entrevistas/2.jpg" class="card-img-top rounded-4" alt="Entrevista 4">
       <div class="card-body px-0">
@@ -265,8 +264,7 @@
       </div>
     </div>
   </div>
-</div>
-    </div>
+  </div>
   </div>
 </section>
 <!------------------------GALERIA--------------------------------->
@@ -277,7 +275,7 @@
         <h2 class="titulo-galeria mb-3">Galería</h2>
       </div>
     </div>
-      <div class="position-relative">
+     <div class="position-relative px-5">
   <button class="btn btn-dark position-absolute top-50 start-0 translate-middle-y z-3" onclick="moverGaleria(-1)">
     ‹
   </button>
@@ -414,9 +412,10 @@
     </div>
     <div class="row justify-content-center">
       <div class="col-12 col-md-10 col-lg-8 col-xl-6">
-        <form action="https://formsubmit.co/destribats79@gmail.com" method="POST" class="row g-3">
+        <form id="formulario-contacto" action="https://formsubmit.co/destribats79@gmail.com" method="POST" class="row g-3">
           <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="http://127.0.0.1:5500/index.html">
+          <input type="hidden" name="_next" value="">
+          <input type="hidden" name="_subject" value="Nuevo contacto desde la web de Agustín">
 
           <div class="col-12">
             <input type="text" name="nombre" class="form-control form-control-lg" placeholder="Nombre" required>
@@ -500,23 +499,39 @@
   <!-- Bootstrap JS -->
 <script>
   const formulario = document.getElementById('formulario-contacto');
-  const mensaje = document.getElementById('mensaje-confirmacion');
+const mensaje = document.getElementById('mensaje-confirmacion');
 
+if (formulario) {
   formulario.addEventListener('submit', function (e) {
-    e.preventDefault(); // evita envío inmediato
+    e.preventDefault();
 
-    // Envía el formulario manualmente
+    const btnEnviar = formulario.querySelector('button[type="submit"]');
+    btnEnviar.disabled = true;
+    btnEnviar.textContent = 'Enviando...';
+
     fetch(formulario.action, {
       method: 'POST',
       body: new FormData(formulario),
       headers: { 'Accept': 'application/json' }
-    }).then(response => {
+    })
+    .then(response => {
       if (response.ok) {
         formulario.reset();
         mensaje.style.display = 'block';
+        btnEnviar.textContent = 'Mensaje enviado ✓';
+      } else {
+        btnEnviar.disabled = false;
+        btnEnviar.textContent = 'Enviar Mensaje';
+        alert('Hubo un error. Intentá de nuevo.');
       }
+    })
+    .catch(() => {
+      btnEnviar.disabled = false;
+      btnEnviar.textContent = 'Enviar Mensaje';
+      alert('Sin conexión. Intentá de nuevo.');
     });
   });
+}
 </script>
 
 
@@ -542,26 +557,51 @@
 <!-- script galeria-->
 <script>
   function moverGaleria(direccion) {
-    const carrusel = document.getElementById('galeriaCarrusel');
-    const imagen = carrusel.querySelector('.img-galeria');
-    if (!imagen) return;
+  const carrusel = document.getElementById('galeriaCarrusel');
+  const imagen = carrusel.querySelector('.img-galeria');
+  if (!imagen) return;
 
-    const ancho = imagen.offsetWidth + 14; // ancho + gap
-    const paso = ancho * 0.3; // ← desplazamiento más lento (50% del ancho)
-     const maxScroll = carrusel.scrollWidth - carrusel.clientWidth;
-    const nuevoScroll = carrusel.scrollLeft + direccion * paso;
+  const ancho = imagen.offsetWidth + 16;
+  const maxScroll = carrusel.scrollWidth - carrusel.clientWidth;
+  const nuevoScroll = carrusel.scrollLeft + direccion * ancho;
 
-
-    if (nuevoScroll > maxScroll) {
-      carrusel.scrollTo({ left: 0, behavior: 'smooth' }); // volver al inicio
-    } else if (nuevoScroll < 0) {
-      carrusel.scrollTo({ left: maxScroll, behavior: 'smooth' }); // ir al final si retrocede desde el inicio
-    } else {
-      carrusel.scrollBy({ left: direccion * ancho, behavior: 'smooth' });
-    }
+  if (nuevoScroll > maxScroll) {
+    carrusel.scrollTo({ left: 0, behavior: 'smooth' });
+  } else if (nuevoScroll < 0) {
+    carrusel.scrollTo({ left: maxScroll, behavior: 'smooth' });
+  } else {
+    carrusel.scrollTo({ left: nuevoScroll, behavior: 'smooth' });
   }
+}
 </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Script animaciones scroll -->
+<script>
+  const observador = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.15
+  });
+
+  document.querySelectorAll('.fade-up, .fade-left, .fade-right').forEach(el => {
+    observador.observe(el);
+  });
+</script>
+<!-- Script navbar scroll -->
+<script>
+  window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.custom-navbar');
+    if (window.scrollY > 80) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+</script>
 </body>
 </html>
