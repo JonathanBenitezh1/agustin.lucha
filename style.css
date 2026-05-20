@@ -174,12 +174,25 @@ html {
 
 .historia-section p {
   font-size: 1.15rem;
-  line-height: 1.5;
+  line-height: 1.8;
   text-shadow: 1px 1px 2px #000;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
+@media (max-width: 767px) {
+  .historia-section p {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+    padding: 0 4px;
+  }
+
+  .historia-section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
 @media (max-width: 767px) {
   .titulo-historia {
     font-size: 2rem;
@@ -274,23 +287,37 @@ html {
 }
 /*---------------SECCION SIGUE MI CAMINO------------*/
 .bloque-camino {
-  background-color: #111; /* fondo plano oscuro */
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
-
-.titulo-camino {
-  font-size: 2.8rem;
-  color: #efb810;
-  text-shadow: 1px 1px 2px #000;
-  font-weight: 700;
-  text-transform: uppercase;
+  background-color: #111;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 .icono-red {
   width: 60px;
   height: 60px;
   transition: transform 0.3s ease;
+}
+
+@media (max-width: 576px) {
+  .titulo-camino {
+    font-size: 2rem;
+  }
+
+  .iconos-redes {
+    gap: 3rem !important;
+  }
+
+  .icono-red {
+    width: 52px;
+    height: 52px;
+  }
+}
+.titulo-camino {
+  font-size: 2.8rem;
+  color: #efb810;
+  text-shadow: 1px 1px 2px #000;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .icono-red:hover {
@@ -328,18 +355,36 @@ html {
 }
 
 .img-galeria {
-  height: 350px;
+  height: 320px;
+  width: 280px;
   border-radius: 24px;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   flex: 0 0 auto;
   object-fit: cover;
+  object-position: center top;
 }
 
 .img-galeria:hover {
-  transform: scale(1.05);
+  transform: scale(1.04);
+  box-shadow: 0 8px 30px rgba(239,184,16,0.3);
 }
 
+@media (max-width: 768px) {
+  .img-galeria {
+    height: 200px;
+    width: 200px;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .img-galeria {
+    height: 155px;
+    width: 155px;
+    border-radius: 12px;
+  }
+}
 /* Botones de galería */
 .bloque-galeria .position-relative .btn {
   width: 40px;
@@ -503,8 +548,28 @@ html {
 /*---------------------- PATROCINIO -------------------- */
 .patrocinio-banner {
   background-color: #f24b04;
-  padding: 10px 0;
+  padding: 18px 0;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+@media (max-width: 767px) {
+  .patrocinio-banner .row {
+    gap: 1rem;
+  }
+
+  .mensaje-patrocinio {
+    font-size: 1rem;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .btn-patrocinio-banner {
+    font-size: 1rem;
+    padding: 10px 24px;
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+  }
 }
 
 .mensaje-patrocinio {
@@ -526,18 +591,6 @@ html {
   background-color: #fff;
   color: #000;
   transform: scale(1.05);
-}
-
-@media (max-width: 767px) {
-  .mensaje-patrocinio {
-    font-size: 1rem;
-    text-align: center;
-  }
-
-  .btn-patrocinio-banner {
-    font-size: 0.95rem;
-    padding: 8px 20px;
-  }
 }
 
 /*---------------------- CONTACTA CONMIGO -------------------- */
@@ -622,12 +675,22 @@ html {
   padding: 30px 25px;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease;
-   text-shadow: 1px 1px 2px #000;
+  transition: transform 0.3s ease, border 0.3s ease;
+  text-shadow: 1px 1px 2px #000;
+  border: 1px solid transparent;
+  height: 100%;
 }
 
 .dato-contacto-directo:hover {
   transform: translateY(-5px);
+  border-color: #efb810;
+}
+
+@media (min-width: 992px) {
+  .contacto-directo .row {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
 }
 
 .etiqueta-contacto {
@@ -655,9 +718,74 @@ html {
 }
 /*---------------------- FOOTER -------------------- */
 .footer-principal {
-  background-color: #232323;
+  background-color: #1a1a1a;
   font-size: 0.95rem;
-  border-top: 1px solid #444;
+  border-top: 2px solid #efb810;
+}
+
+.footer-nombre {
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.footer-nombre span {
+  color: #efb810;
+}
+
+.footer-sub {
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.footer-links li {
+  margin-bottom: 6px;
+}
+
+.footer-links a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #efb810;
+}
+
+.footer-red {
+  opacity: 0.7;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+.footer-red:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+@media (max-width: 767px) {
+  .footer-principal {
+    text-align: center;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-links li {
+    margin-bottom: 0;
+  }
 }
 /* =============================================
    ANIMACIONES AL SCROLL
