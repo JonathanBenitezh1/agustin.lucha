@@ -9,7 +9,18 @@
   <!-- Estilos personalizados -->
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+  <!-- Loader de entrada -->
+<div id="loader" class="loader-pantalla">
+  <div class="loader-contenido">
+    <h1 class="loader-nombre">Agustín <span>Destribats</span></h1>
+    <p class="loader-subtitulo">Luchador Olímpico Argentino</p>
+    <div class="loader-barra">
+      <div class="loader-progreso"></div>
+    </div>
+  </div>
+</div>
 	<nav class="navbar navbar-expand-lg fixed-top custom-navbar">
   <div class="container d-flex align-items-center justify-content-between">
     <!-- Logo + Nombre -->
@@ -385,7 +396,46 @@
     </div>
   </div>
 </div>
+<!-- CONTADORES -->
+<section class="bloque-contadores text-white">
+  <div class="container py-5">
+    <div class="row text-center gy-4">
 
+      <div class="col-6 col-md-3 fade-up delay-1">
+        <div class="contador-item">
+          <span class="contador-numero" data-objetivo="4">0</span>
+          <span class="contador-sufijo">🥇</span>
+          <p class="contador-label">Oros Panamericanos</p>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3 fade-up delay-2">
+        <div class="contador-item">
+          <span class="contador-numero" data-objetivo="1">0</span>
+          <span class="contador-sufijo">🌍</span>
+          <p class="contador-label">Medalla Mundial</p>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3 fade-up delay-3">
+        <div class="contador-item">
+          <span class="contador-numero" data-objetivo="3">0</span>
+          <span class="contador-sufijo">📅</span>
+          <p class="contador-label">Años en Top 10 Mundial</p>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3 fade-up delay-4">
+        <div class="contador-item">
+          <span class="contador-numero" data-objetivo="1">0</span>
+          <span class="contador-sufijo">🎌</span>
+          <p class="contador-label">Juegos Olímpicos</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 <!-- PATROCIONIO -->
 
 <section id="patrocinio-banner" class="patrocinio-banner text-white">
@@ -398,6 +448,75 @@
         <a href="#contacto" class="btn btn-patrocinio-banner px-4 py-4">Patrocina a Agustín</a>
       </div>
     </div>
+  </div>
+</section>
+<!-- SPONSORS -->
+<section id="patrocina" class="bloque-sponsors text-white">
+  <div class="container py-5">
+    <div class="row justify-content-center text-center mb-4">
+      <div class="col-lg-8">
+        <h2 class="titulo-sponsors fade-up">Nuestros Sponsors</h2>
+        <p class="subtitulo-sponsors fade-up delay-1">Marcas que apuestan al deporte argentino de alto rendimiento</p>
+      </div>
+    </div>
+
+    <!-- Logos con scroll automático -->
+    <div class="sponsors-track-wrapper fade-up delay-2">
+      <div class="sponsors-track">
+
+        <!-- Sponsor 1 — reemplazá src por el logo real -->
+        <div class="sponsor-slot">
+          <div class="sponsor-placeholder">TU MARCA</div>
+        </div>
+
+        <!-- Sponsor 2 -->
+        <div class="sponsor-slot">
+          <div class="sponsor-placeholder">TU MARCA</div>
+        </div>
+
+        <!-- Sponsor 3 -->
+        <div class="sponsor-slot">
+          <div class="sponsor-placeholder">TU MARCA</div>
+        </div>
+
+        <!-- Sponsor 4 -->
+        <div class="sponsor-slot">
+          <div class="sponsor-placeholder">TU MARCA</div>
+        </div>
+
+        <!-- Sponsor 5 -->
+        <div class="sponsor-slot">
+          <div class="sponsor-placeholder">TU MARCA</div>
+        </div>
+
+        <!-- Duplicados para efecto infinito -->
+        <div class="sponsor-slot">
+          <div class="sponsor-placeholder">TU MARCA</div>
+        </div>
+        <div class="sponsor-slot">
+          <div class="sponsor-placeholder">TU MARCA</div>
+        </div>
+        <div class="sponsor-slot">
+          <div class="sponsor-placeholder">TU MARCA</div>
+        </div>
+        <div class="sponsor-slot">
+          <div class="sponsor-placeholder">TU MARCA</div>
+        </div>
+        <div class="sponsor-slot">
+          <div class="sponsor-placeholder">TU MARCA</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CTA para atraer sponsors -->
+    <div class="row justify-content-center text-center mt-5 fade-up delay-3">
+      <div class="col-lg-6">
+        <p class="cta-sponsors-texto">¿Querés que tu marca aparezca aquí?</p>
+        <a href="#contacto" class="btn btn-sponsor-cta px-5 py-3">Quiero ser sponsor</a>
+      </div>
+    </div>
+
   </div>
 </section>
 <!--       CONECTA CONMIGO        -->
@@ -602,6 +721,56 @@ if (formulario) {
       navbar.classList.remove('scrolled');
     }
   });
+</script>
+<!-- Botón flotante WhatsApp -->
+<a href="https://wa.link/83zzk3" target="_blank" class="btn-whatsapp" aria-label="Contactar por WhatsApp">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="32" height="32">
+</a>
+
+<!-- Script loader -->
+<script>
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    setTimeout(() => {
+      loader.classList.add('oculto');
+    }, 1800);
+  });
+</script>
+<!-- Script contadores animados -->
+<script>
+  const contadores = document.querySelectorAll('.contador-numero');
+  let contadorActivado = false;
+
+  const activarContadores = () => {
+    if (contadorActivado) return;
+
+    const seccion = document.querySelector('.bloque-contadores');
+    if (!seccion) return;
+
+    const rect = seccion.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) {
+      contadorActivado = true;
+
+      contadores.forEach(contador => {
+        const objetivo = parseInt(contador.getAttribute('data-objetivo'));
+        const duracion = 1500;
+        const pasos = 60;
+        const incremento = objetivo / pasos;
+        let actual = 0;
+        let paso = 0;
+
+        const intervalo = setInterval(() => {
+          paso++;
+          actual = Math.min(Math.round(incremento * paso), objetivo);
+          contador.textContent = actual;
+          if (actual >= objetivo) clearInterval(intervalo);
+        }, duracion / pasos);
+      });
+    }
+  };
+
+  window.addEventListener('scroll', activarContadores);
+  activarContadores();
 </script>
 </body>
 </html>

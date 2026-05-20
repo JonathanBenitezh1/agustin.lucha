@@ -707,3 +707,323 @@ html {
   background-color: rgba(20, 20, 20, 0.92);
   box-shadow: 0 4px 20px rgba(0,0,0,0.4);
 }
+/* =============================================
+   BOTÓN FLOTANTE WHATSAPP
+   ============================================= */
+.btn-whatsapp {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 58px;
+  height: 58px;
+  background-color: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+  z-index: 9999;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-whatsapp:hover {
+  transform: scale(1.12);
+  box-shadow: 0 6px 24px rgba(37,211,102,0.45);
+}
+
+@media (max-width: 576px) {
+  .btn-whatsapp {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+/* =============================================
+   LOADER DE ENTRADA
+   ============================================= */
+.loader-pantalla {
+  position: fixed;
+  inset: 0;
+  background-color: #111;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loader-pantalla.oculto {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-contenido {
+  text-align: center;
+  color: #fff;
+}
+
+.loader-nombre {
+  font-size: 3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 0.5rem;
+  animation: fadeInDown 0.8s ease forwards;
+}
+
+.loader-nombre span {
+  color: #efb810;
+}
+
+.loader-subtitulo {
+  font-size: 1.1rem;
+  color: #aaa;
+  margin-bottom: 2rem;
+  animation: fadeInDown 0.8s ease 0.2s forwards;
+  opacity: 0;
+}
+
+.loader-barra {
+  width: 220px;
+  height: 4px;
+  background-color: #333;
+  border-radius: 10px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.loader-progreso {
+  height: 100%;
+  width: 0%;
+  background-color: #efb810;
+  border-radius: 10px;
+  animation: progreso 1.6s ease forwards;
+}
+
+@keyframes progreso {
+  0%   { width: 0%; }
+  100% { width: 100%; }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 576px) {
+  .loader-nombre {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+
+  .loader-subtitulo {
+    font-size: 0.95rem;
+  }
+
+  .loader-barra {
+    width: 160px;
+  }
+}
+/* =============================================
+   CONTADORES ANIMADOS
+   ============================================= */
+.bloque-contadores {
+  background-color: #1a1a1a;
+  border-top: 2px solid #efb810;
+  border-bottom: 2px solid #efb810;
+}
+
+.contador-item {
+  padding: 20px 10px;
+  transition: transform 0.3s ease;
+}
+
+.contador-item:hover {
+  transform: translateY(-6px);
+}
+
+.contador-numero {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #efb810;
+  text-shadow: 0 0 20px rgba(239,184,16,0.4);
+  line-height: 1;
+}
+
+.contador-sufijo {
+  font-size: 2rem;
+  margin-left: 4px;
+}
+
+.contador-label {
+  font-size: 1rem;
+  color: #ccc;
+  margin-top: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 576px) {
+  .contador-numero {
+    font-size: 2.8rem;
+  }
+
+  .contador-sufijo {
+    font-size: 1.5rem;
+  }
+
+  .contador-label {
+    font-size: 0.85rem;
+  }
+}
+/* =============================================
+   SECCIÓN SPONSORS
+   ============================================= */
+.bloque-sponsors {
+  background-color: #161616;
+}
+
+.titulo-sponsors {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #efb810;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.subtitulo-sponsors {
+  font-size: 1.1rem;
+  color: #aaa;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* Track con scroll infinito */
+.sponsors-track-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  padding: 10px 0;
+}
+
+.sponsors-track-wrapper::before,
+.sponsors-track-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  z-index: 2;
+}
+
+.sponsors-track-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, #161616, transparent);
+}
+
+.sponsors-track-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, #161616, transparent);
+}
+
+.sponsors-track {
+  display: flex;
+  gap: 2rem;
+  animation: scrollSponsors 18s linear infinite;
+  width: max-content;
+}
+
+.sponsors-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollSponsors {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.sponsor-slot {
+  flex: 0 0 auto;
+  width: 180px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2a2a2a;
+  border-radius: 12px;
+  border: 1px solid #333;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.sponsor-slot:hover {
+  border-color: #efb810;
+  transform: scale(1.05);
+}
+
+/* Placeholder cuando no hay logo */
+.sponsor-placeholder {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+/* Cuando hay imagen real */
+.sponsor-slot img {
+  max-width: 130px;
+  max-height: 60px;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(1.5);
+  transition: filter 0.3s ease;
+}
+
+.sponsor-slot:hover img {
+  filter: grayscale(0%) brightness(1);
+}
+
+/* CTA sponsors */
+.cta-sponsors-texto {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+.btn-sponsor-cta {
+  background-color: #efb810;
+  color: #000;
+  font-weight: 700;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-sponsor-cta:hover {
+  background-color: #fff;
+  color: #000;
+  transform: scale(1.05);
+}
+
+@media (max-width: 767px) {
+  .titulo-sponsors {
+    font-size: 2rem;
+  }
+
+  .sponsor-slot {
+    width: 140px;
+    height: 70px;
+  }
+
+  .cta-sponsors-texto {
+    font-size: 1rem;
+  }
+}
