@@ -693,21 +693,32 @@ html {
 /*---------------------- PATROCINIO -------------------- */
 .patrocinio-banner {
   background-color: #f24b04;
-  padding: 18px 0;
+  padding: 12px 0;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 @media (max-width: 767px) {
-  .patrocinio-banner .row {
-    gap: 1rem;
+  .patrocinio-banner {
+    padding: 10px 0;
+  }
+
+  .patrocinio-banner .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .mensaje-patrocinio {
-    font-size: 1rem;
+    font-size: 0.88rem;
     text-align: center;
-    padding: 0 1rem;
+    padding: 0;
+    margin-bottom: 8px !important;
   }
 
+  .btn-patrocinio-banner {
+    font-size: 0.85rem;
+    padding: 7px 18px;
+  }
+}
   .btn-patrocinio-banner {
     font-size: 1rem;
     padding: 10px 24px;
@@ -715,20 +726,12 @@ html {
     margin: 0 auto;
     width: fit-content;
   }
-}
-
-.mensaje-patrocinio {
-  font-size: 1.3rem;
-  font-weight: 500;
-  text-shadow: 1px 1px 2px #000;
-}
 
 .btn-patrocinio-banner {
   background-color: #000;
   color: #fff;
   font-weight: 600;
   border-radius: 50px;
-  font-size: 1.3rem;
   transition: all 0.3s ease;
 }
 
@@ -905,6 +908,40 @@ html {
   background-color: #1a1a1a;
   font-size: 0.95rem;
   border-top: 2px solid #efb810;
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.5rem !important;
+}
+
+.footer-nombre {
+  font-size: 1.1rem;
+}
+
+.footer-sub {
+  font-size: 0.8rem;
+}
+
+.footer-copy {
+  font-size: 0.75rem;
+}
+
+.footer-links a {
+  font-size: 0.85rem;
+}
+
+.footer-red img {
+  width: 28px;
+  height: 28px;
+}
+
+@media (max-width: 767px) {
+  .footer-principal {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  .footer-links {
+    gap: 0.8rem;
+  }
 }
 
 .footer-nombre {
