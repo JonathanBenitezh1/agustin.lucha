@@ -55,7 +55,8 @@
 </nav>
 <!-- PORTADA -->
 <section id="portada" class="hero-section d-flex align-items-center text-white">
-	<div class="overlay"></div> 
+  <div class="overlay"></div>
+  <canvas id="particulas" class="particulas-canvas"></canvas>
 	<div class="container">
     <div class="row justify-content-end">
       <div class="col-12 col-md-10 col-lg-6 text-light">
@@ -74,9 +75,10 @@
 <!--  MI HISTORIA -->
 <section id="historia" class="historia-section text-light py-5">
   <div class="container">
+    <div class="historia-card fade-up">
     <div class="row align-items-center gy-4">
       <div class="col-lg-6 text-center fade-left">
-  <h2 class="titulo-historia mb-4">Mi Historia</h2>
+        <h2 class="titulo-historia mb-4">Mi Historia</h2>
 
         <p>
           Conseguí 4 medallas de oro panamericanas y me convertí en el único luchador argentino en lograrlo. No fue para nada fácil el camino. Los cambios de culturas de países como Alemania o Irán, tan distintos a lo nuestro —el idioma, las rutinas, las comidas, la gente— me obligaron a adaptarme. Pero sin dudas, me marcaron en mi carrera deportiva.
@@ -98,6 +100,8 @@
       <div class="col-lg-5 offset-lg-1 text-center fade-right">
         <img src="img/28-min.jpg" alt="Agustín en combate" class="img-fluid rounded-4 shadow">
       </div>
+      </div>
+    </div>
     </div>
   </div>
 </section>
@@ -801,6 +805,88 @@ if (formulario) {
 
   window.addEventListener('scroll', activarContadores);
   activarContadores();
+</script>
+<!-- Script partículas portada -->
+<script>
+  const canvas = document.getElementById('particulas');
+  const ctx = canvas.getContext('2d');
+
+  let particulas = [];
+
+  function redimensionar() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+
+  window.addEventListener('resize', redimensionar);
+  redimensionar();
+
+  class Particula {
+    constructor() {
+      this.reset();
+    }
+
+    reset() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.tamanio = Math.random() * 2.5 + 0.5;
+      this.velocidadX = (Math.random() - 0.5) * 0.4;
+      this.velocidadY = Math.random() * -0.6 - 0.2;
+      this.opacidad = Math.random() * 0.6 + 0.2;
+      this.brillo = Math.random() > 0.6; // algunas brillan más
+    }
+
+    actualizar() {
+      this.x += this.velocidadX;
+      this.y += this.velocidadY;
+      this.opacidad -= 0.0015;
+
+      if (this.opacidad <= 0 || this.y < -10) {
+        this.reset();
+        this.y = canvas.height + 10;
+        this.opacidad = Math.random() * 0.6 + 0.2;
+      }
+    }
+
+    dibujar() {
+      ctx.save();
+      ctx.globalAlpha = this.opacidad;
+
+      if (this.brillo) {
+        // destello con resplandor
+        ctx.shadowColor = '#efb810';
+        ctx.shadowBlur = 8;
+        ctx.fillStyle = '#fff8dc';
+      } else {
+        ctx.shadowBlur = 0;
+        ctx.fillStyle = '#efb810';
+      }
+
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.tamanio, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  // Crear partículas — menos en mobile para no afectar performance
+  const cantidad = window.innerWidth < 768 ? 40 : 90;
+  for (let i = 0; i < cantidad; i++) {
+    const p = new Particula();
+    p.y = Math.random() * canvas.height; // distribuidas desde el inicio
+    particulas.push(p);
+  }
+
+  function animar() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particulas.forEach(p => {
+      p.actualizar();
+      p.dibujar();
+    });
+    requestAnimationFrame(animar);
+  }
+
+  animar();
 </script>
 </body>
 </html>

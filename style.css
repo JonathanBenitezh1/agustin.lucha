@@ -158,9 +158,32 @@ html {
 }
 /*---------------------MI HISTORIA-----------------------------------------------------*/
 .historia-section {
-  background-color: #111; /* o mantené transparente si tenés fondo */
+  background-color: #111;
   position: relative;
   z-index: 1;
+  padding: 60px 0;
+}
+
+.historia-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(239, 184, 16, 0.25);
+  border-radius: 24px;
+  padding: 48px 40px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.3s ease;
+}
+
+.historia-card:hover {
+  box-shadow: 0 12px 50px rgba(239, 184, 16, 0.15);
+}
+
+@media (max-width: 767px) {
+  .historia-card {
+    padding: 28px 20px;
+    border-radius: 16px;
+  }
 }
 
 .titulo-historia {
@@ -528,20 +551,76 @@ html {
 
 /* Carrusel solo en móviles/tablets */
 @media (max-width: 991px) {
+  #entrevistasCarousel {
+    padding: 0 2rem;
+  }
+
+#entrevistasCarousel .carousel-inner {
+  min-height: 480px;
+}
+
+
   #entrevistasCarousel .carousel-item {
     padding: 0 1rem;
   }
 
+#entrevistasCarousel .card {
+  height: 100%;
+  min-height: 460px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
   #entrevistasCarousel .card-img-top {
     border-radius: 1rem;
+    height: 220px;
+    object-fit: cover;
+    width: 100%;
   }
 
+  #entrevistasCarousel .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  #entrevistasCarousel .card-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  #entrevistasCarousel .card-text {
+    font-size: 0.9rem;
+    flex: 1;
+  }
+
+  #entrevistasCarousel .btn-ver {
+    margin-top: auto;
+    align-self: center;
+    width: fit-content;
+  }
 
   #entrevistasCarousel .carousel-control-prev-icon,
   #entrevistasCarousel .carousel-control-next-icon {
     background-color: #000000;
     border-radius: 50%;
     padding: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  #entrevistasCarousel .carousel-inner {
+    min-height: 500px;
+  }
+
+  #entrevistasCarousel .card {
+    min-height: 480px;
+  }
+
+  #entrevistasCarousel .card-img-top {
+    height: 180px;
   }
 }
 
@@ -1154,4 +1233,17 @@ html {
   .cta-sponsors-texto {
     font-size: 1rem;
   }
+}
+
+/* =============================================
+   PARTÍCULAS PORTADA
+   ============================================= */
+.particulas-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none; /* no interfiere con clicks */
 }
