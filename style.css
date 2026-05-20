@@ -316,8 +316,69 @@ html {
 /*---------------SECCION SIGUE MI CAMINO------------*/
 .bloque-camino {
   background-color: #111;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  background-image: radial-gradient(ellipse at bottom, #1f1a00 0%, #111 60%);
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.camino-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(239, 184, 16, 0.25);
+  border-radius: 20px;
+  padding: 24px 28px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.3s ease;
+}
+
+.camino-card:hover {
+  box-shadow: 0 12px 50px rgba(239, 184, 16, 0.15);
+}
+
+.camino-subtitulo {
+  font-size: 1rem;
+  color: #aaa;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.camino-red-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.camino-red-link:hover {
+  transform: translateY(-6px);
+}
+
+.camino-red-label {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.camino-red-link:hover .camino-red-label {
+  color: #efb810;
+}
+
+@media (max-width: 576px) {
+  .camino-card {
+    padding: 28px 20px;
+    border-radius: 16px;
+  }
+
+  .camino-subtitulo {
+    font-size: 0.9rem;
+  }
+
+  .titulo-camino {
+    font-size: 2rem;
+  }
 }
 
 .icono-red {
