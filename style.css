@@ -121,37 +121,42 @@ html {
 
 @media (max-width: 767px) {
   .hero-section {
+    min-height: 75vh;
     background-position: center center;
-    padding-top: 90px;
+    padding-top: 80px;
+    padding-bottom: 30px;
   }
 
   .hero-section h1 {
-    font-size: 2.2rem;
+    font-size: 1.9rem;
     text-align: center;
   }
 
   .hero-section h2 {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     text-align: center;
+    margin-bottom: 0.6rem !important;
   }
 
   .hero-section p {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     text-align: center;
     padding: 0 8px;
+    margin-bottom: 0.8rem !important;
   }
 
   .hero-section .btn {
     display: block;
     margin: 0 auto;
+    font-size: 0.95rem;
+    padding: 10px 22px;
   }
 
   .hero-section .container {
     padding-top: 10px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
   }
 
-  /* La columna del texto ocupa todo en mobile */
   .hero-section .col-12 {
     text-align: center;
   }
@@ -690,8 +695,25 @@ html {
 }
 
 .overlay-contacto {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: 1;
+}
+
+.bloque-contacto .row.justify-content-center > div {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(239, 184, 16, 0.25);
+  border-radius: 24px;
+  padding: 40px 36px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 767px) {
+  .bloque-contacto .row.justify-content-center > div {
+    padding: 28px 18px;
+    border-radius: 16px;
+  }
 }
 
 .titulo-contacto {
@@ -738,7 +760,8 @@ html {
 
 /*---------------------- CONTACTO DIRECTO -------------------- */
 .contacto-directo {
-  background-color: #232323;
+  background-color: #111;
+  background-image: radial-gradient(ellipse at top, #1f1a00 0%, #111 60%);
 }
 
 .titulo-contacto-directo {
@@ -750,19 +773,38 @@ html {
 }
 
 .dato-contacto-directo {
-  background-color: #2e2e2e;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(239, 184, 16, 0.2);
   padding: 30px 25px;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease, border 0.3s ease;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   text-shadow: 1px 1px 2px #000;
-  border: 1px solid transparent;
   height: 100%;
 }
 
+@media (max-width: 576px) {
+  .dato-contacto-directo {
+    padding: 18px 12px;
+    border-radius: 12px;
+  }
+
+  .etiqueta-contacto {
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+
+  .valor-contacto {
+    font-size: 0.85rem;
+  }
+}
+
 .dato-contacto-directo:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
   border-color: #efb810;
+  box-shadow: 0 12px 40px rgba(239, 184, 16, 0.15);
 }
 
 @media (min-width: 992px) {
@@ -784,6 +826,8 @@ html {
   font-size: 1.1rem;
   color: #fff;
   margin: 0;
+  word-break: break-all;
+  overflow-wrap: break-word;
 }
 
 @media (max-width: 767px) {
