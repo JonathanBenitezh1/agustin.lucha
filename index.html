@@ -917,16 +917,16 @@ if (formulario) {
 <script>
   function toggleHistoria() {
     const extra = document.getElementById('historiaExtra');
-    const boton = document.getElementById('btnLeerMas');
+    const textoBoton = document.getElementById('textoLeerMas');
     const icono = document.getElementById('iconoLeerMas');
 
     extra.classList.toggle('abierto');
     icono.classList.toggle('rotado');
 
     if (extra.classList.contains('abierto')) {
-      boton.innerHTML = 'Leer menos <span id="iconoLeerMas" class="rotado">▾</span>';
+      textoBoton.textContent = 'Leer menos';
     } else {
-      boton.innerHTML = 'Leer más <span id="iconoLeerMas">▾</span>';
+      textoBoton.textContent = 'Leer más';
     }
   }
 </script>
