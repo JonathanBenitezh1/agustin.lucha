@@ -13,6 +13,28 @@
   gtag('config', 'G-MC8196Z5Y5');
 </script>
   <title>Agustín Destribats - Luchador Olímpico</title>
+  <!-- SEO básico -->
+  <meta name="description" content="Agustín Destribats, luchador olímpico argentino. Primer argentino en clasificar a los Juegos Olímpicos desde 1996 y en conseguir una medalla mundial. Historia, logros y contacto.">
+  <meta name="keywords" content="Agustín Destribats, luchador olímpico, lucha libre Argentina, Tokio 2020, Los Ángeles 2028, wrestling argentino, Córdoba">
+  <meta name="author" content="Agustín Destribats">
+  <link rel="canonical" href="https://agustindestribats.com/">
+
+  <!-- Open Graph (vista previa al compartir en redes) -->
+  <meta property="og:title" content="Agustín Destribats - Luchador Olímpico Argentino">
+  <meta property="og:description" content="Primer argentino en clasificar a los Juegos Olímpicos desde 1996 y en conseguir una medalla mundial. Conocé su historia y logros.">
+  <meta property="og:image" content="https://agustindestribats.com/img/portada.png">
+  <meta property="og:url" content="https://agustindestribats.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Agustín Destribats - Luchador Olímpico Argentino">
+  <meta name="twitter:description" content="Primer argentino en clasificar a los Juegos Olímpicos desde 1996 y en conseguir una medalla mundial.">
+  <meta name="twitter:image" content="https://agustindestribats.com/img/portada.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="img/97.jpg">
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Estilos personalizados -->
@@ -93,17 +115,23 @@
           Conseguí 4 medallas de oro panamericanas y me convertí en el único luchador argentino en lograrlo. No fue para nada fácil el camino. Los cambios de culturas de países como Alemania o Irán, tan distintos a lo nuestro —el idioma, las rutinas, las comidas, la gente— me obligaron a adaptarme. Pero sin dudas, me marcaron en mi carrera deportiva.
         </p>
 
-        <p>
-          Estas experiencias me ayudaron a dar el salto para estar entre los 6 mejores del mundo. Me fortalecieron, me enseñaron a confiar en mí mismo y a mejorar mis debilidades. El último país en el que me instalé fue Rusia, en la ciudad de Majachkalá, en el Cáucaso musulmán. Allí permaneci tres años yendo y viniendo, y aunque fue un desafío, terminé sintiéndome parte de ese lugar.
-        </p>
+        <div class="historia-extra" id="historiaExtra">
+          <p>
+            Estas experiencias me ayudaron a dar el salto para estar entre los 6 mejores del mundo. Me fortalecieron, me enseñaron a confiar en mí mismo y a mejorar mis debilidades. El último país en el que me instalé fue Rusia, en la ciudad de Majachkalá, en el Cáucaso musulmán. Allí permaneci tres años yendo y viniendo, y aunque fue un desafío, terminé sintiéndome parte de ese lugar.
+          </p>
 
-        <p>
-          Tantos días de entrenamiento, tantos viajes, tanta dedicación también dieron sus frutos. Logré cumplir dos grandes sueños: clasificar a los Juegos Olímpicos de Tokio 2020 (algo que no ocurría desde 1996) y obtener una medalla mundial. Representar a mi país y llevar la bandera argentina por el mundo es uno de mis mayores orgullos.
-        </p>
+          <p>
+            Tantos días de entrenamiento, tantos viajes, tanta dedicación también dieron sus frutos. Logré cumplir dos grandes sueños: clasificar a los Juegos Olímpicos de Tokio 2020 (algo que no ocurría desde 1996) y obtener una medalla mundial. Representar a mi país y llevar la bandera argentina por el mundo es uno de mis mayores orgullos.
+          </p>
 
-        <p>
-          Dejé muchas cosas por la lucha: estudiar a distancia, estar lejos de mi familia y amigos, perder momentos importantes. Pero lo que me dio el deporte no lo cambio por nada. Ahora voy por un nuevo sueño: los Juegos Olímpicos de Los Ángeles 2028. Para lograrlo, necesito de tu ayuda. Propongo que seamos aliados estratégicos y escribamos juntos una nueva página en la historia de la lucha argentina.
-        </p>
+          <p>
+            Dejé muchas cosas por la lucha: estudiar a distancia, estar lejos de mi familia y amigos, perder momentos importantes. Pero lo que me dio el deporte no lo cambio por nada. Ahora voy por un nuevo sueño: los Juegos Olímpicos de Los Ángeles 2028. Para lograrlo, necesito de tu ayuda. Propongo que seamos aliados estratégicos y escribamos juntos una nueva página en la historia de la lucha argentina.
+          </p>
+        </div>
+
+        <button class="btn-leer-mas" id="btnLeerMas" onclick="toggleHistoria()">
+          Leer más <span id="iconoLeerMas">▾</span>
+        </button>
       </div>
 
       <div class="col-lg-5 offset-lg-1 text-center fade-right">
@@ -884,6 +912,23 @@ if (formulario) {
   }
 
   animar();
+</script>
+<!-- Script Leer Más historia -->
+<script>
+  function toggleHistoria() {
+    const extra = document.getElementById('historiaExtra');
+    const boton = document.getElementById('btnLeerMas');
+    const icono = document.getElementById('iconoLeerMas');
+
+    extra.classList.toggle('abierto');
+    icono.classList.toggle('rotado');
+
+    if (extra.classList.contains('abierto')) {
+      boton.innerHTML = 'Leer menos <span id="iconoLeerMas" class="rotado">▾</span>';
+    } else {
+      boton.innerHTML = 'Leer más <span id="iconoLeerMas">▾</span>';
+    }
+  }
 </script>
 </body>
 </html>
