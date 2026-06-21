@@ -129,9 +129,9 @@
           </p>
         </div>
 
-        <button class="btn-leer-mas" id="btnLeerMas" onclick="toggleHistoria()">
-          Leer más <span id="iconoLeerMas">▾</span>
-        </button>
+       <button class="btn-leer-mas" id="btnLeerMas" onclick="toggleHistoria()">
+  		<span id="textoLeerMas">Leer más</span> <span id="iconoLeerMas">▾</span>
+		</button>
       </div>
 
       <div class="col-lg-5 offset-lg-1 text-center fade-right">
@@ -918,16 +918,16 @@ if (formulario) {
 <script>
   function toggleHistoria() {
     const extra = document.getElementById('historiaExtra');
-    const boton = document.getElementById('btnLeerMas');
+    const textoBoton = document.getElementById('textoLeerMas');
     const icono = document.getElementById('iconoLeerMas');
 
     extra.classList.toggle('abierto');
     icono.classList.toggle('rotado');
 
     if (extra.classList.contains('abierto')) {
-      boton.innerHTML = 'Leer menos <span id="iconoLeerMas" class="rotado">▾</span>';
+      textoBoton.textContent = 'Leer menos';
     } else {
-      boton.innerHTML = 'Leer más <span id="iconoLeerMas">▾</span>';
+      textoBoton.textContent = 'Leer más';
     }
   }
 </script>
