@@ -2,6 +2,32 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Las <img> llevan width/height en el HTML para reservar el espacio y evitar saltos
+   al cargar. Sin este height:auto el navegador toma la altura del atributo tal cual y
+   estira la foto cuando el CSS le cambia el ancho. Cualquier regla que fije una altura
+   propia (.icono-red, .img-galeria, .footer-red img...) tiene mas especificidad y gana. */
+img {
+  height: auto;
+}
+
+/* El logo es casi cuadrado pero la foto no: object-fit la recorta en vez de achatarla */
+.navbar-brand img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+/* La navbar es fija: sin esto tapa el titulo de la seccion al llegar por un enlace ancla */
+section[id] {
+  scroll-margin-top: 90px;
+}
+
+@media (max-width: 991px) {
+  section[id] {
+    scroll-margin-top: 80px;
+  }
+}
+
 .custom-navbar {
   background-color: rgba(195, 219, 157, 0.263);
   backdrop-filter: blur(8px);
@@ -67,7 +93,7 @@ html {
 .hero-section {
   position: relative;
   min-height: 100vh;
-  background-image: url('img/portada.png');
+  background-image: url('img/portada.jpg');
   background-size: cover;
   background-position: center 50%;
   background-repeat: no-repeat;
@@ -237,16 +263,24 @@ html {
     margin-top: 1rem;
   }
 }
-/*---------------SECCION LOGROS------------*/
+/*----------------------- LOGROS / MEDALLERO ------------------------------- */
 .bloque-logros {
   position: relative;
-  min-height: 70vh;
-  background-image: url('img/29MIN.png');
+  background-image: url('img/29MIN.jpg');
   background-size: cover;
   background-position: center 20%;
   background-repeat: no-repeat;
   background-attachment: scroll;
   overflow: hidden;
+  /* Tokens de las tres medallas: cada una tiene su metal y su color de acento */
+  --oro: #efb810;
+  --oro-metal: linear-gradient(145deg, #fff3c4 0%, #f5c93b 35%, #b8860b 70%, #f7de8a 100%);
+  --plata: #cfd6dd;
+  --plata-metal: linear-gradient(145deg, #ffffff 0%, #d4dae1 35%, #8b969f 70%, #eef2f5 100%);
+  --bronce: #d08e50;
+  --bronce-metal: linear-gradient(145deg, #f3c9a2 0%, #d08e50 35%, #8a5524 70%, #edbd92 100%);
+  --hito: #5aa9e6;
+  --hito-metal: linear-gradient(145deg, #cfe8ff 0%, #5aa9e6 40%, #1f5c8b 75%, #bfe0ff 100%);
 }
 
 @media (min-width: 992px) {
@@ -255,64 +289,407 @@ html {
   }
 }
 
+/* La foto de fondo es muy cargada: el velo la apaga para que el texto se lea siempre */
 .overlay-logros {
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background:
+    linear-gradient(to bottom, rgba(10, 10, 10, 0.97) 0%, rgba(10, 10, 10, 0.76) 22%, rgba(10, 10, 10, 0.76) 78%, rgba(10, 10, 10, 0.97) 100%),
+    radial-gradient(ellipse at 50% 0%, rgba(239, 184, 16, 0.14) 0%, transparent 60%);
   z-index: 1;
 }
 
 .bloque-logros .container {
   position: relative;
   z-index: 2;
+  max-width: 1080px;
+}
+
+/* ---- Encabezado ---- */
+.medallero-encabezado {
+  margin-bottom: 2.5rem;
+}
+
+.medallero-kicker {
+  font-size: 0.8rem;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: rgba(239, 184, 16, 0.75);
+  margin-bottom: 0.6rem;
 }
 
 .titulo-logros {
-  font-size: 2.8rem;
+  font-size: 3rem;
   color: #efb810;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 4px;
-  text-shadow: 1px 1px 2px #000;
+  letter-spacing: 5px;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.7);
 }
 
-.bloque-logros ul {
-  padding-left: 0;
+/* Subrayado dorado, en lugar del text-shadow duro que tenia antes */
+.titulo-logros::after {
+  content: '';
+  display: block;
+  width: 72px;
+  height: 3px;
+  margin: 0.9rem auto 0;
+  background: linear-gradient(to right, transparent, #efb810, transparent);
+}
+
+.medallero-bajada {
+  color: #b9b9b9;
+  font-size: 1.05rem;
   margin-bottom: 0;
 }
 
-.bloque-logros ul li {
-  font-size: 1.2rem;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  text-shadow: 1px 1px 2px #000;
-  margin-bottom: 0.5rem;
-  padding-left: 0.5rem;
+/* ---- Resumen: cuantas de cada una ---- */
+.medallero-resumen {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.25rem;
+}
+
+.resumen-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 1.25rem 0.75rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(6px);
+  transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.resumen-item:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.resumen-item[data-medalla="oro"]:hover    { border-color: rgba(239, 184, 16, 0.55); }
+.resumen-item[data-medalla="plata"]:hover  { border-color: rgba(207, 214, 221, 0.55); }
+.resumen-item[data-medalla="bronce"]:hover { border-color: rgba(208, 142, 80, 0.55); }
+.resumen-item[data-medalla="hito"]:hover   { border-color: rgba(90, 169, 230, 0.55); }
+
+.resumen-disco {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.6), 0 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.resumen-item[data-medalla="oro"] .resumen-disco    { background: var(--oro-metal); }
+.resumen-item[data-medalla="plata"] .resumen-disco  { background: var(--plata-metal); }
+.resumen-item[data-medalla="bronce"] .resumen-disco { background: var(--bronce-metal); }
+.resumen-item[data-medalla="hito"] .resumen-disco   { background: var(--hito-metal); }
+
+.resumen-numero {
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+}
+
+.resumen-label {
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #9a9a9a;
+  text-align: center;
+}
+
+/* ---- Filtros ---- */
+.medallero-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.medallero-filtro {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #d0d0d0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.medallero-filtro:hover {
+  border-color: rgba(239, 184, 16, 0.6);
+  color: #efb810;
+}
+
+.medallero-filtro.activo {
+  background-color: #efb810;
+  border-color: #efb810;
+  color: #141414;
+}
+
+/* ---- Linea de tiempo ---- */
+.medallero-linea {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   position: relative;
 }
 
-@media (max-width: 991px) {
-  .bloque-logros .container {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
+/* El hilo vertical que une los anios */
+.medallero-linea::before {
+  content: '';
+  position: absolute;
+  left: 79px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, rgba(239, 184, 16, 0.45) 8%, rgba(239, 184, 16, 0.45) 92%, transparent);
 }
 
+.medallero-fila {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 0 2rem;
+  padding-bottom: 1.5rem;
+}
+
+.medallero-fila[hidden] {
+  display: none;
+}
+
+.medallero-anio {
+  position: relative;
+  text-align: right;
+  padding-top: 0.9rem;
+  padding-right: 16px;
+}
+
+.medallero-anio span {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #efb810;
+  letter-spacing: 1px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* El punto sobre el hilo */
+.medallero-anio::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: 1.6rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #efb810;
+  box-shadow: 0 0 0 4px rgba(239, 184, 16, 0.18);
+}
+
+.medallero-tarjetas {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* ---- Tarjeta de cada medalla ---- */
+.medalla-tarjeta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.25rem;
+  border-radius: 14px;
+  background: rgba(20, 20, 20, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 3px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.medalla-tarjeta:hover {
+  transform: translateX(6px);
+  background: rgba(30, 30, 30, 0.8);
+}
+
+.medalla-tarjeta[data-medalla="oro"]    { border-left-color: var(--oro); }
+.medalla-tarjeta[data-medalla="plata"]  { border-left-color: var(--plata); }
+.medalla-tarjeta[data-medalla="bronce"] { border-left-color: var(--bronce); }
+.medalla-tarjeta[data-medalla="hito"]   { border-left-color: var(--hito); }
+
+.medalla-tarjeta[hidden] {
+  display: none;
+}
+
+/* El disco metalico: el degradado imita el brillo de la medalla */
+.medalla-disco {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.65), inset 0 -2px 4px rgba(0, 0, 0, 0.35), 0 3px 8px rgba(0, 0, 0, 0.5);
+}
+
+.medalla-disco::after {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+}
+
+.medalla-tarjeta[data-medalla="oro"] .medalla-disco    { background: var(--oro-metal); }
+.medalla-tarjeta[data-medalla="plata"] .medalla-disco  { background: var(--plata-metal); }
+.medalla-tarjeta[data-medalla="bronce"] .medalla-disco { background: var(--bronce-metal); }
+.medalla-tarjeta[data-medalla="hito"] .medalla-disco   { background: var(--hito-metal); }
+
+.medalla-cuerpo {
+  min-width: 0;
+}
+
+/* El chip de texto distingue la medalla sin depender solo del color */
+.medalla-chip {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 2px 9px;
+  border-radius: 50px;
+  margin-bottom: 0.3rem;
+}
+
+.medalla-tarjeta[data-medalla="oro"] .medalla-chip    { background: rgba(239, 184, 16, 0.16); color: var(--oro); }
+.medalla-tarjeta[data-medalla="plata"] .medalla-chip  { background: rgba(207, 214, 221, 0.16); color: var(--plata); }
+.medalla-tarjeta[data-medalla="bronce"] .medalla-chip { background: rgba(208, 142, 80, 0.18); color: var(--bronce); }
+.medalla-tarjeta[data-medalla="hito"] .medalla-chip   { background: rgba(90, 169, 230, 0.18); color: var(--hito); }
+
+.medalla-titulo {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.15rem;
+  line-height: 1.3;
+}
+
+.medalla-detalle {
+  font-size: 0.87rem;
+  color: #a5a5a5;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.medalla-sede {
+  color: #777;
+}
+
+.medallero-vacio {
+  text-align: center;
+  color: #888;
+  padding: 2rem 0 0;
+  margin: 0;
+}
+
+/* ---- Mobile ---- */
 @media (max-width: 767px) {
   .titulo-logros {
-    font-size: 2rem;
-    text-align: center;
+    font-size: 2.1rem;
+    letter-spacing: 3px;
   }
 
-  .bloque-logros ul li {
+  .medallero-kicker {
+    letter-spacing: 4px;
+  }
+
+  .medallero-bajada {
     font-size: 0.95rem;
-    text-align: left;
-    padding-left: 0.2rem;
   }
 
-  .bloque-logros .row {
-    justify-content: center !important;
+  .medallero-resumen {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .resumen-numero {
+    font-size: 2rem;
+  }
+
+  .medallero-filtros {
+    gap: 0.4rem;
+    margin-bottom: 2rem;
+  }
+
+  .medallero-filtro {
+    font-size: 0.75rem;
+    padding: 7px 15px;
+  }
+
+  /* En mobile el anio pasa a ser un encabezado arriba de sus medallas */
+  .medallero-linea::before {
+    left: 5px;
+  }
+
+  .medallero-fila {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+    padding-left: 1.75rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .medallero-anio {
+    text-align: left;
+    padding-top: 0;
+    padding-right: 0;
+  }
+
+  .medallero-anio::after {
+    right: auto;
+    left: -1.75rem;
+    top: 0.35rem;
+  }
+
+  .medalla-tarjeta {
+    gap: 0.8rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .medalla-tarjeta:hover {
+    transform: none;
+  }
+
+  .medalla-disco {
+    width: 34px;
+    height: 34px;
+  }
+
+  .medalla-titulo {
+    font-size: 0.95rem;
+  }
+
+  .medalla-detalle {
+    font-size: 0.8rem;
   }
 }
+
+@media (max-width: 400px) {
+  .resumen-label {
+    font-size: 0.65rem;
+  }
+
+  .resumen-numero {
+    font-size: 1.8rem;
+  }
+}
+
 /*---------------SECCION SIGUE MI CAMINO------------*/
 .bloque-camino {
   background-color: #111;
@@ -663,7 +1040,7 @@ html {
   }
 
   #entrevistasCarousel .btn-ver {
-    margin-top: auto;
+    margin-top: auto !important;
     align-self: center;
     width: fit-content;
   }
@@ -690,55 +1067,105 @@ html {
   }
 }
 
-/*---------------------- PATROCINIO -------------------- */
-.patrocinio-banner {
-  background-color: #f24b04;
-  padding: 12px 0;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+/* ---- Grid de entrevistas en desktop ----
+   Las cuatro portadas vienen con proporciones distintas (1.5 a 2.0), asi que cada
+   tarjeta arrancaba el texto a una altura diferente y los botones quedaban escalonados.
+   Se les fija la misma proporcion y el boton se empuja al fondo de la tarjeta. */
+/* Fondo propio para las tarjetas, en mobile y en desktop: eran transparentes y el texto
+   caia directamente sobre la foto de fondo de la seccion, que casi no lo dejaba leer. */
+.bloque-entrevistas .card {
+  background: rgba(16, 16, 16, 0.86) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
-@media (max-width: 767px) {
-  .patrocinio-banner {
-    padding: 10px 0;
-  }
-
-  .patrocinio-banner .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .mensaje-patrocinio {
-    font-size: 0.88rem;
-    text-align: center;
-    padding: 0;
-    margin-bottom: 8px !important;
-  }
-
-  .btn-patrocinio-banner {
-    font-size: 0.85rem;
-    padding: 7px 18px;
-  }
+.bloque-entrevistas .card-body {
+  padding: 1.1rem 1.25rem 1.35rem !important;
 }
-  .btn-patrocinio-banner {
-    font-size: 1rem;
-    padding: 10px 24px;
+
+.bloque-entrevistas .card-title,
+.bloque-entrevistas .card-text {
+  text-shadow: none;
+}
+
+.bloque-entrevistas .card-text {
+  color: #b0b0b0;
+}
+
+.bloque-entrevistas .card-body small {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* la portada va pegada al borde superior; el radio lo pone la tarjeta */
+.bloque-entrevistas .card-img-top {
+  border-radius: 0;
+}
+
+@media (min-width: 992px) {
+  .bloque-entrevistas .row .card {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .bloque-entrevistas .row .card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(239, 184, 16, 0.45) !important;
+  }
+
+  /* Todas las portadas con el mismo recorte */
+  .bloque-entrevistas .row .card-img-top {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 0;
     display: block;
-    margin: 0 auto;
-    width: fit-content;
   }
 
-.btn-patrocinio-banner {
-  background-color: #000;
-  color: #fff;
-  font-weight: 600;
-  border-radius: 50px;
-  transition: all 0.3s ease;
-}
+  .bloque-entrevistas .row .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
 
-.btn-patrocinio-banner:hover {
-  background-color: #fff;
-  color: #000;
-  transform: scale(1.05);
+  /* Sobre fondo propio ya no hace falta la sombra dura que compensaba la foto */
+  .bloque-entrevistas .row .card-title {
+    font-size: 1.05rem;
+    line-height: 1.35;
+    margin-bottom: 0.5rem;
+    text-shadow: none;
+  }
+
+  .bloque-entrevistas .row .card-text {
+    font-size: 0.87rem;
+    line-height: 1.5;
+    color: #b0b0b0;
+    text-shadow: none;
+    /* recorta las sinopsis largas para que todas ocupen lo mismo */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .bloque-entrevistas .row .card-body small {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* margin-top:auto alinea los cuatro botones en la misma linea */
+  .bloque-entrevistas .row .btn-ver {
+    /* !important para ganarle a las utilidades mt-2/mt-3 de Bootstrap, que lo traen */
+    margin-top: auto !important;
+    align-self: flex-start;
+    font-size: 0.95rem;
+    padding: 8px 22px;
+    transition: all 0.25s ease;
+  }
 }
 
 /*---------------------- CONTACTA CONMIGO -------------------- */
@@ -890,7 +1317,8 @@ html {
   font-size: 1.1rem;
   color: #fff;
   margin: 0;
-  word-break: break-all;
+  /* break-all partia palabras normales al medio ("Arge/ntina"); break-word solo parte
+     lo que no entra de ninguna forma, como el email */
   overflow-wrap: break-word;
 }
 
@@ -910,22 +1338,6 @@ html {
   border-top: 2px solid #efb810;
   padding-top: 1.5rem !important;
   padding-bottom: 1.5rem !important;
-}
-
-.footer-nombre {
-  font-size: 1.1rem;
-}
-
-.footer-sub {
-  font-size: 0.8rem;
-}
-
-.footer-copy {
-  font-size: 0.75rem;
-}
-
-.footer-links a {
-  font-size: 0.85rem;
 }
 
 .footer-red img {
@@ -1428,4 +1840,69 @@ html {
 
 #iconoLeerMas.rotado {
   transform: rotate(180deg);
+}
+/*---------------------- DETALLES -------------------- */
+/* Boton de cierre de los modales de la galeria */
+.modal-cerrar {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.55);
+  border-radius: 50%;
+  padding: 10px;
+  opacity: 0.9;
+}
+
+.modal-cerrar:hover {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Telefono del bloque de contacto directo */
+.link-contacto-directo {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.link-contacto-directo:hover,
+.link-contacto-directo:focus {
+  color: #efb810;
+  text-decoration: underline;
+}
+
+.icono-enviar {
+  vertical-align: -3px;
+  margin-right: 8px;
+}
+
+/* Foco visible en teclado: antes el unico indicador era el hover del mouse */
+a:focus-visible,
+button:focus-visible,
+.form-control:focus-visible {
+  outline: 3px solid #efb810;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Windows y macOS tienen una opcion de "reducir movimiento". Cuando esta activada se
+   desactiva lo que mueve el contenido de golpe (el salto suave entre secciones y la
+   entrada deslizada de los bloques), que es lo que puede marear.
+   NO se tocan los efectos decorativos: las particulas de la portada, el desfile de
+   sponsors, la barra del loader ni la suavidad de los hover. Son lentos, chicos y no
+   desplazan nada, y apagarlos solo dejaba el sitio apagado sin beneficio real. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  /* los bloques aparecen ya en su lugar, sin el deslizamiento de entrada */
+  .fade-up,
+  .fade-left,
+  .fade-right {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
