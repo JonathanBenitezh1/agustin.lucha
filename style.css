@@ -1729,10 +1729,14 @@ section[id] {
   transform: scale(1.05);
 }
 
-/* Un slot con sponsor real es un enlace; el vacio sigue siendo un div */
+/* Un slot con sponsor real es un enlace; el vacio sigue siendo un div.
+   El recuadro gris es el cartel de "lugar disponible": el sponsor de verdad
+   va suelto sobre el fondo, sin caja que lo encierre. */
 a.sponsor-slot {
   text-decoration: none;
   cursor: pointer;
+  background-color: transparent;
+  border-color: transparent;
 }
 
 a.sponsor-slot:focus-visible {
@@ -1753,10 +1757,10 @@ a.sponsor-slot:focus-visible {
 /* Cuando hay imagen real. A color siempre: el gris-hasta-hover deja al sponsor
    en escala de grises para siempre en celular, donde no existe el hover. */
 .sponsor-slot img {
-  /* El logo de Hakka+ es cuadrado y el slot apaisado (180x90), asi que manda el alto.
-     72 lo deja lo mas grande posible con aire arriba y abajo. */
-  max-width: 140px;
-  max-height: 72px;
+  /* El logo es cuadrado y el slot apaisado (180x90), asi que manda el alto.
+     Sin recuadro que lo encierre puede ir mas grande. */
+  max-width: 150px;
+  max-height: 82px;
   /* sin width:auto el ancho sale del atributo del HTML y la caja queda mas ancha
      que el logo; object-fit igual lo protege, pero asi la caja calza exacta */
   width: auto;
@@ -1765,7 +1769,8 @@ a.sponsor-slot:focus-visible {
 }
 
 .sponsor-slot:hover img {
-  transform: scale(1.04);
+  /* el contenedor ya hace scale(1.05) en hover; el logo no se agranda de nuevo */
+  transform: none;
 }
 
 /* CTA sponsors */
